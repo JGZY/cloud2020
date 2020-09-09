@@ -1,0 +1,15 @@
+server:
+  port: 8006
+
+spring:
+  application:
+    name: consul-provider-payment
+  cloud:
+    consul:
+      host: 192.168.10.137
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        #心跳默认是关闭的，如果不开启，consul检查会认为该服务是unhealthy
+        heartbeat:
+          enabled: true
