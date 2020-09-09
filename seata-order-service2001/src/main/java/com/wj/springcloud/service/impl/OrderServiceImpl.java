@@ -5,6 +5,7 @@ import com.wj.springcloud.domain.Order;
 import com.wj.springcloud.service.AccountService;
 import com.wj.springcloud.service.OrderService;
 import com.wj.springcloud.service.StorageService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,7 @@ public class OrderServiceImpl implements OrderService {
     private StorageService storageService;
 
     @Override
+    @GlobalTransactional
     public void create(Order order) {
         log.info("---->开始新建订单");
         orderDao.create(order);
